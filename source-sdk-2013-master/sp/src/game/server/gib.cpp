@@ -266,24 +266,28 @@ void CGib::InitGib( CBaseEntity *pVictim, float fMinVelocity, float fMaxVelocity
 // Input   :
 // Output  :
 //------------------------------------------------------------------------------
-void CGib::SpawnSpecificGibs(	CBaseEntity*	pVictim, 
-								int				nNumGibs, 
-								float			vMinVelocity, 
-								float			vMaxVelocity, 
-								const char*		cModelName,
-								float			flLifetime)
+void CGib::SpawnSpecificGibs(CBaseEntity*	pVictim,
+					int				nNumGibs,
+					float			vMinVelocity,
+					float			vMaxVelocity,
+					const char*		cModelName,
+					float			flLifetime)
 {
-	for (int i=0;i<nNumGibs;i++)
+	for (int i = 0; i < nNumGibs; i++)
 	{
-		CGib *pGib = CREATE_ENTITY( CGib, "gib" );
-		pGib->Spawn( cModelName );
+		CGib *pGib = CREATE_ENTITY(CGib, "gib");
+		pGib->Spawn(cModelName);
 		pGib->m_nBody = i;
-		pGib->InitGib( pVictim, vMinVelocity, vMaxVelocity );
+		pGib->InitGib(pVictim, vMinVelocity, vMaxVelocity);
 		pGib->m_lifeTime = flLifetime;
-		
-		if ( pVictim != NULL )
+
+		if (pVictim != NULL)
 		{
-			pGib->SetOwnerEntity( pVictim );
+			pGib->SetOwnerEntity(pVictim);
+		}
+
+		if (pVictim->GetFlags() & FL_ONFIRE){
+			pGib->Ignite((flLifetime - 1), false);
 		}
 	}
 }

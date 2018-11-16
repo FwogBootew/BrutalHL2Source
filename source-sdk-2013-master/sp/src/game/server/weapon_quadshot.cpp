@@ -7,17 +7,17 @@
 //
 //=============================================================================//
 
-#include "cbase.h"
-#include "npcevent.h"
+#include "cbase.h"//yes
+#include "npcevent.h"//yes
 #include "basehlcombatweapon_shared.h"
-#include "basecombatcharacter.h"
-#include "ai_basenpc.h"
-#include "player.h"
+#include "basecombatcharacter.h"//yes
+#include "ai_basenpc.h"//yes
+#include "player.h"//yes
 #include "gamerules.h"		// For g_pGameRules
-#include "in_buttons.h"
-#include "soundent.h"
-#include "vstdlib/random.h"
-#include "gamestats.h"
+#include "in_buttons.h"//yes
+#include "soundent.h"//yes
+#include "vstdlib/random.h"//yes
+#include "gamestats.h"//yes
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"

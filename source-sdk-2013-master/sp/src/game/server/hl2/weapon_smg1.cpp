@@ -43,14 +43,14 @@ public:
 	virtual void Equip( CBaseCombatCharacter *pOwner );
 	bool	Reload( void );
 
-	float	GetFireRate( void ) { return 0.050f; }	// 13.3hz
+	float	GetFireRate( void ) { return 0.065f; }	// 13.3hz invalid i changed it and i dont care about fucking hertz xd							l      m      a       o
 	int		CapabilitiesGet( void ) { return bits_CAP_WEAPON_RANGE_ATTACK1; }
 	int		WeaponRangeAttack2Condition( float flDot, float flDist );
 	Activity	GetPrimaryAttackActivity( void );
 
 	virtual const Vector& GetBulletSpread( void )
 	{
-		static const Vector cone = VECTOR_CONE_4DEGREES;
+		static const Vector cone = VECTOR_CONE_5DEGREES;
 		return cone;
 	}
 
