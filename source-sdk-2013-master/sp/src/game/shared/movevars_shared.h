@@ -14,6 +14,8 @@
 
 float GetCurrentGravity( void );
 
+
+extern ConVar sv_gibs;
 extern ConVar sv_gravity;
 extern ConVar sv_stopspeed;
 extern ConVar sv_noclipaccelerate;

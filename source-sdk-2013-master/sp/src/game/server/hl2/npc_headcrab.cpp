@@ -1797,7 +1797,7 @@ void CBaseHeadcrab::Event_Killed( const CTakeDamageInfo &info )
 		VectorNormalize(vecDamageDir);
 
 		// Big blood splat
-		UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_YELLOW, 8, FX_BLOODSPRAY_CLOUD);
+		UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_YELLOW, 12, FX_BLOODSPRAY_CLOUD);
 	}
 
 	BaseClass::Event_Killed(info);

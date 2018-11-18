@@ -241,6 +241,72 @@ LINK_ENTITY_TO_CLASS(item_large_box_lrounds, CItem_LargeBoxLRounds);
 LINK_ENTITY_TO_CLASS(item_ammo_ar2_large, CItem_LargeBoxLRounds);
 
 
+
+// ========================================================================
+//	>> BoxMRounds
+// ========================================================================
+class CItem_BoxIncarceratorRounds : public CItem
+{
+public:
+	DECLARE_CLASS(CItem_BoxIncarceratorRounds, CItem);
+
+	void Spawn(void)
+	{
+		Precache();
+		SetModel("models/items/combine_rifle_cartridge01.mdl");
+		BaseClass::Spawn();
+	}
+	void Precache(void)
+	{
+		PrecacheModel("models/items/combine_rifle_cartridge01.mdl");
+	}
+	bool MyTouch(CBasePlayer *pPlayer)
+	{
+		if (ITEM_GiveAmmo(pPlayer, 20, "IncarceratorEnergy"))
+		{
+			if (g_pGameRules->ItemShouldRespawn(this) == GR_ITEM_RESPAWN_NO)
+			{
+				UTIL_Remove(this);
+			}
+			return true;
+		}
+		return false;
+	}
+};
+LINK_ENTITY_TO_CLASS(item_ammo_incarcerator, CItem_BoxIncarceratorRounds);
+
+// ========================================================================
+//	>> LargeBoxMRounds
+// ========================================================================
+class CItem_LargeBoxIncarceratorRounds : public CItem
+{
+public:
+	DECLARE_CLASS(CItem_LargeBoxIncarceratorRounds, CItem);
+
+	void Spawn(void)
+	{
+		Precache();
+		SetModel("models/items/combine_rifle_cartridge01.mdl");
+		BaseClass::Spawn();
+	}
+	void Precache(void)
+	{
+		PrecacheModel("models/items/combine_rifle_cartridge01.mdl");
+	}
+	bool MyTouch(CBasePlayer *pPlayer)
+	{
+		if (ITEM_GiveAmmo(pPlayer, 100, "IncarceratorEnergy"))
+		{
+			if (g_pGameRules->ItemShouldRespawn(this) == GR_ITEM_RESPAWN_NO)
+			{
+				UTIL_Remove(this);
+			}
+			return true;
+		}
+		return false;
+	}
+};
+LINK_ENTITY_TO_CLASS(item_ammo_incarcerator_large, CItem_LargeBoxIncarceratorRounds);
 // ========================================================================
 //	>> CItem_Box357Rounds
 // ========================================================================

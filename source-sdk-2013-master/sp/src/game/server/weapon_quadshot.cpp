@@ -37,6 +37,7 @@ private:
 	bool	m_bNeedPump;		// When emptied completely
 	bool	m_bDelayedFire1;	// Fire primary when finished reloading
 	bool	m_bDelayedFire2;	// Fire secondary when finished reloading
+	
 
 public:
 	void	Precache(void);
@@ -316,12 +317,12 @@ void CWeaponQuadshot::SecondaryAttack(void)
 	Vector	vecSrc = pPlayer->Weapon_ShootPosition();
 	Vector	vecAiming = pPlayer->GetAutoaimVector(AUTOAIM_SCALE_DEFAULT);
 
-	pPlayer->SetMuzzleFlashTime(gpGlobals->curtime + 1.0);
+	pPlayer->SetMuzzleFlashTime(gpGlobals->curtime + 3.0);
 
 	// Fire the bullets, and force the first shot to be perfectly accuracy
 	pPlayer->FireBullets(75, vecSrc, vecAiming, GetBulletSpread2(), MAX_TRACE_LENGTH, m_iPrimaryAmmoType, 0, -1, -1, 0, NULL, true, true);
 
-	pPlayer->ViewPunch(QAngle(random->RandomFloat(-2, -1), random->RandomFloat(-2, 2), 0));
+	pPlayer->ViewPunch(QAngle(random->RandomFloat(-2, -1), random->RandomFloat(-10, 20), 0));
 
 	CSoundEnt::InsertSound(SOUND_COMBAT, GetAbsOrigin(), SOUNDENT_VOLUME_SHOTGUN, 0.2, GetOwner());
 
