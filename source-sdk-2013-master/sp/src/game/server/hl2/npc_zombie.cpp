@@ -864,8 +864,10 @@ int CZombie::OnTakeDamage_Alive( const CTakeDamageInfo &inputInfo )
 }
 
 //-----------------------------------------------------------------------------
-
+//EVENT KILLED
 //-----------------------------------------------------------------------------
+
+
 int z_gib;
 // ^^^ Gib Varible Set
 void CC_GFull(void)
