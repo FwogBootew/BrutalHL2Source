@@ -510,3 +510,4 @@ const WeaponProficiencyInfo_t *CWeaponAR2::GetProficiencyValues()
 
 	return proficiencyTable;
 }
+//BRB I LOVE YOU DONT LEAVE ME PLEASE

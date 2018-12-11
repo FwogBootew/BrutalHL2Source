@@ -461,7 +461,7 @@ void CWeaponShotgun::PrimaryAttack( void )
 	pPlayer->SetAnimation( PLAYER_ATTACK1 );
 
 	// Don't fire again until fire animation has completed
-	m_flNextPrimaryAttack = gpGlobals->curtime + SequenceDuration();
+	m_flNextPrimaryAttack = gpGlobals->curtime + 0.15;
 	m_iClip1 -= 1;
 
 	Vector	vecSrc		= pPlayer->Weapon_ShootPosition( );

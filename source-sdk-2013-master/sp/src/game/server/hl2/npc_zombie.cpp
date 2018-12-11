@@ -1321,6 +1321,429 @@ void CZombie::Event_Killed(const CTakeDamageInfo &info)
 			// Big blood splat
 			UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 8, FX_BLOODSPRAY_CLOUD);
 	}
+
+	if (info.GetDamageType() & (DMG_CRUSH))
+	{
+		if (z_gib == 1){
+			if (m_random == 1){
+				Vector vecDamageDir = info.GetDamageForce();
+				// Big blood splat
+				UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 20, FX_BLOODSPRAY_ALL);
+			}
+			else{
+				if (m_random == 2){
+					Vector vecDamageDir = info.GetDamageForce();
+					// Big blood splat
+					UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 17, FX_BLOODSPRAY_ALL);
+					UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 13, FX_BLOODSPRAY_ALL);
+
+					SetModel("models/zombie/classic_torso.mdl");
+				}
+				else{
+					if (m_random == 3){
+						Vector vecDamageDir = info.GetDamageForce();
+						// Big blood splat
+						UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 13, FX_BLOODSPRAY_ALL);
+					}
+					else{
+						if (m_random == 4){
+							Vector vecDamageDir = info.GetDamageForce();
+							// Big blood splat
+							UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 14, FX_BLOODSPRAY_ALL);
+
+							SetModel("models/zombie/classic_legs.mdl");
+						}
+					}
+				}
+			}
+		}
+		else{
+			if (z_gib == 2){
+				if (m_random == 1){
+					Vector vecDamageDir = info.GetDamageForce();
+					// Big blood splat
+					UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 20, FX_BLOODSPRAY_ALL);
+
+					SetModel("models/gibs/rgib_p1.mdl");
+
+					CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p1.mdl", 5);
+					CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p3.mdl", 5);
+					CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p4.mdl", 5);
+					CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+
+					Vector vecLegsForce;
+					vecLegsForce.x = random->RandomFloat(-400, 400);
+					vecLegsForce.y = random->RandomFloat(-400, 400);
+					vecLegsForce.z = random->RandomFloat(0, 250);
+					float flFadeTime = 0.0;
+
+					CBaseEntity *pLegsGib = CreateRagGib("models/zombie/classic_torso.mdl", GetAbsOrigin(), GetAbsAngles(), vecLegsForce, flFadeTime, ShouldIgniteZombieGib());
+					if (pLegsGib)	{ CopyRenderColorTo(pLegsGib); }
+				}
+				else{
+					if (m_random == 2){
+						Vector vecDamageDir = info.GetDamageForce();
+						// Big blood splat
+						UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 17, FX_BLOODSPRAY_ALL);
+						UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 13, FX_BLOODSPRAY_ALL);
+
+						SetModel("models/gibs/rgib_p1.mdl");
+
+						EmitSound("NPC_BaseZombie.Swat");
+
+						CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p1.mdl", 5);
+						CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+						CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+						CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+					}
+					else{
+						if (m_random == 3){
+							Vector vecDamageDir = info.GetDamageForce();
+							// Big blood splat
+							UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 13, FX_BLOODSPRAY_ALL);
+
+							SetModel("models/zombie/classic_torso.mdl");
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+						}
+						else{
+							if (m_random == 4){
+								Vector vecDamageDir = info.GetDamageForce();
+								// Big blood splat
+								UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 14, FX_BLOODSPRAY_ALL);
+
+									SetModel("models/gibs/rgib_p1.mdl");
+
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p4.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+
+							}
+						}
+					}
+				}
+
+			}
+			else{
+				if (z_gib == 3){
+					if (m_random == 1){
+						Vector vecDamageDir = info.GetDamageForce();
+						// Big blood splat
+						UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 20, FX_BLOODSPRAY_ALL);
+
+						SetModel("models/gibs/rgib_p1.mdl");
+
+						CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p1.mdl", 5);
+						CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p5.mdl", 5);
+						CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+						CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+						CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+						CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+						CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+
+						Vector vecLegsForce;
+						vecLegsForce.x = random->RandomFloat(-400, 400);
+						vecLegsForce.y = random->RandomFloat(-400, 400);
+						vecLegsForce.z = random->RandomFloat(0, 250);
+						float flFadeTime = 0.0;
+
+						CBaseEntity *pLegsGib = CreateRagGib("models/zombie/classic_torso.mdl", GetAbsOrigin(), GetAbsAngles(), vecLegsForce, flFadeTime, ShouldIgniteZombieGib());
+						if (pLegsGib)	{ CopyRenderColorTo(pLegsGib); }
+					}
+					else{
+						if (m_random == 2){
+							Vector vecDamageDir = info.GetDamageForce();
+							// Big blood splat
+							UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 17, FX_BLOODSPRAY_ALL);
+							UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 13, FX_BLOODSPRAY_ALL);
+
+							SetModel("models/gibs/rgib_p1.mdl");
+
+							EmitSound("NPC_BaseZombie.Swat");
+
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+						}
+						else{
+							if (m_random == 3){
+								Vector vecDamageDir = info.GetDamageForce();
+								// Big blood splat
+								UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 13, FX_BLOODSPRAY_ALL);
+
+								SetModel("models/zombie/classic_torso.mdl");
+
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p4.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p5.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+							}
+							else{
+								if (m_random == 4){
+									Vector vecDamageDir = info.GetDamageForce();
+									// Big blood splat
+									UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 14, FX_BLOODSPRAY_ALL);
+
+									SetModel("models/gibs/rgib_p1.mdl");
+
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p4.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p4.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p5.mdl", 5);
+								}
+							}
+						}
+					}
+
+				}
+				else{
+					if (z_gib == 4){
+						if (m_random == 1){
+							Vector vecDamageDir = info.GetDamageForce();
+							// Big blood splat
+							UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 20, FX_BLOODSPRAY_ALL);
+
+							SetModel("models/gibs/rgib_p1.mdl");
+
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p1.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p5.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p3.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p4.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+							CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+
+							Vector vecLegsForce;
+							vecLegsForce.x = random->RandomFloat(-400, 400);
+							vecLegsForce.y = random->RandomFloat(-400, 400);
+							vecLegsForce.z = random->RandomFloat(0, 250);
+							float flFadeTime = 0.0;
+
+							CBaseEntity *pLegsGib = CreateRagGib("models/zombie/classic_torso.mdl", GetAbsOrigin(), GetAbsAngles(), vecLegsForce, flFadeTime, ShouldIgniteZombieGib());
+							if (pLegsGib)	{ CopyRenderColorTo(pLegsGib); }
+						}
+						else{
+							if (m_random == 2){
+								Vector vecDamageDir = info.GetDamageForce();
+								// Big blood splat
+								UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 17, FX_BLOODSPRAY_ALL);
+								UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 13, FX_BLOODSPRAY_ALL);
+
+								SetModel("models/gibs/rgib_p1.mdl");
+
+								EmitSound("NPC_BaseZombie.Swat");
+
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p1.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p1.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+							}
+							else{
+								if (m_random == 3){
+									Vector vecDamageDir = info.GetDamageForce();
+									// Big blood splat
+									UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 13, FX_BLOODSPRAY_ALL);
+
+									SetModel("models/zombie/classic_torso.mdl");
+
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p4.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p5.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+								}
+								else{
+									if (m_random == 4){
+										Vector vecDamageDir = info.GetDamageForce();
+										// Big blood splat
+										UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 14, FX_BLOODSPRAY_ALL);
+
+										SetModel("models/gibs/rgib_p1.mdl");
+
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p4.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p4.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p5.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p1.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+									}
+								}
+							}
+						}
+
+					}
+					else{
+						if (z_gib == 5){
+							if (m_random == 1){
+								Vector vecDamageDir = info.GetDamageForce();
+								// Big blood splat
+								UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 20, FX_BLOODSPRAY_ALL);
+
+								SetModel("models/gibs/rgib_p1.mdl");
+
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p1.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p4.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p5.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p3.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p4.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/gibhead.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+								CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+
+								Vector vecLegsForce;
+								vecLegsForce.x = random->RandomFloat(-400, 400);
+								vecLegsForce.y = random->RandomFloat(-400, 400);
+								vecLegsForce.z = random->RandomFloat(0, 250);
+								float flFadeTime = 0.0;
+
+								CBaseEntity *pLegsGib = CreateRagGib("models/zombie/classic_torso.mdl", GetAbsOrigin(), GetAbsAngles(), vecLegsForce, flFadeTime, ShouldIgniteZombieGib());
+								if (pLegsGib)	{ CopyRenderColorTo(pLegsGib); }
+							}
+							else{
+								if (m_random == 2){
+									Vector vecDamageDir = info.GetDamageForce();
+									// Big blood splat
+									UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 17, FX_BLOODSPRAY_ALL);
+									UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 13, FX_BLOODSPRAY_ALL);
+
+									SetModel("models/gibs/rgib_p1.mdl");
+
+									EmitSound("NPC_BaseZombie.Swat");
+
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p1.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p4.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p5.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p3.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p4.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/gibhead.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+									CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+								}
+								else{
+									if (m_random == 3){
+										Vector vecDamageDir = info.GetDamageForce();
+										// Big blood splat
+										UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 13, FX_BLOODSPRAY_ALL);
+
+										SetModel("models/zombie/classic_torso.mdl");
+
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p1.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p4.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p5.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p3.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p4.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/gibhead.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+										CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+									}
+									else{
+										if (m_random == 4){
+											Vector vecDamageDir = info.GetDamageForce();
+											// Big blood splat
+											UTIL_BloodSpray(WorldSpaceCenter(), vecDamageDir, BLOOD_COLOR_RED, 14, FX_BLOODSPRAY_ALL);
+
+											SetModel("models/gibs/rgib_p1.mdl");
+
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p1.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p2.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p3.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p4.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/pgib_p5.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_jaw.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/hgibs_scapula.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p1.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p2.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p3.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p4.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/gibhead.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p5.mdl", 5);
+											CGib::SpawnSpecificGibs(this, 1, 750, 1500, "models/gibs/rgib_p6.mdl", 5);
+
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	BaseClass::Event_Killed(info);
 }
 //-----------------------------------------------------------------------------
